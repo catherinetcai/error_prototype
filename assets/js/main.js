@@ -1,43 +1,66 @@
-$( document ).ready( function()
-{	
+
+$( document ).ready( function(){	
 	var form = $( '#test_form' );
 
-	var validator = form.validate({
+	var validation = form.validate({
 
+
+		//Not validating every keystroke
 		onkeyup: false,
 
+		//If the element has an error, validate it
 		onfocusin: function( element ) {
-			if($(element).hasClass('has-error'))
-				$(element).valid();
+			if( $( element ).hasClass( 'has-error' ) )
+				$( element ).valid();
 		},
 
-		onfocusout: function( element, errorList ) {
-			if($(element).hasClass('has-error'))
-				$(element).parent().find('.popover').hide();
+		//Hide popover on focusout. If doesn't have error, validate
+
+		onfocusout: function( element, errorMap ) {
+			if($( element ).hasClass( 'has-error' ) ) {
+				$( element ).valid();
+				$( element ).parent().find( '.popover' ).hide();
+				console.log( errorMap );
+			}
 			else
-				$(element).valid();
+				$( element ).valid();
 		},
 
 		showErrors: function( errorMap, errorList ) {
-			$.each( this.successList, function( index, value ) {
-				$(value).removeClass('has-error').popover('hide');
 
+			//To do: put together an array that tracks all the errors, so that it's possible to, onfocusout, display the first error on the page's popover
+			errorTracker = [];
+
+			//When validated, remove the popover
+			$.each( this.successList, function( index, value ) {
+				$( value ).removeClass( 'has-error' ).popover( 'hide' );
 			});
 
-			$.each( errorList, function(index, value) {
-
-				var _popover = $(value.element).popover({
+			//Displaying popover on first invalid element, defaults to top
+			$.each( errorList, function( index, value ) {
+				console.log( value );
+				var _popover = $( value.element ).popover({
 					trigger: 'manual',
 					placement: 'top',
 					content: value.message,
 					template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
 				});
 
-				_popover.data('bs.popover').options.content = value.message;
+				_popover.data( 'bs.popover' ).options.content = value.message;
 				//$(value.element).popover('show');
-				$(value.element).addClass('has-error');
-				$(errorList[0].element).popover('show');
+				$( value.element ).addClass( 'has-error' );
+				$( errorList[0].element ).popover( 'show' );
 			});
+		},
+
+
+		//Should scroll to the top of the element. To do: make it so it actually scrolls, not jumps.
+		invalidHandler: function( form, validator ) {
+			if ( !validator.numberOfInvalids() )
+				return;
+			$( 'html, body' ).animate({
+				scrollTop: $( validator.errorList[0].element ).offset(top)
+				}, 2000);
 		},
 
 		rules: {
@@ -85,9 +108,5 @@ $( document ).ready( function()
 		},
 
 	});
-	
-
-
-	console.log( validator );
 } );
 
