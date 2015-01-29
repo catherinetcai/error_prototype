@@ -1,0 +1,63 @@
+h4
+	font-family: Helvetica, Arial, sans-serif
+	font-weight: 600
+	color: white
+
+.clearfix
+	clear: both
+
+.main
+	float: left
+	width: 100%
+	padding-bottom: 1em
+	background-color: $bg-color
+
+	.header-text
+		margin: 0 auto
+
+	#test_form
+		.form-group
+			margin-bottom: 2em
+			
+		.has-error
+			border: 3px solid red
+
+	#test_form label
+		color: white
+		padding: 1em 0 .25em 0
+		float: left
+
+	.name,
+	.password,
+	.confirm_password,
+	.email
+		position: relative
+
+		.delete-button-container
+			position: absolute
+			width: 30px
+			height: 30px
+			top: 8px
+			right: 10px
+
+			.delete-button:hover
+				opacity: 0.5
+			
+	.form-control
+		height: 45px
+
+		#select_state
+			color: #A8A8A8
+		
+	.button-container
+		padding-top: 1em
+
+@media only screen and (max-width: 767px)
+	#test_form
+		width: 80%
+		margin: 0 auto
+
+@media only screen and (min-width: 768px)
+	#test_form
+		width: 40%
+		margin: 0 auto

@@ -1,0 +1,26 @@
+#errorContainer
+	background-color: rgba(80, 80, 82, .5)
+	border-radius: 5px
+	color: $red !important
+	clear: both
+	width: 100%
+	padding-top: .4em
+	margin: 0 auto
+	display: none
+	margin-bottom: .5em
+
+#errorContainer
+	li
+		list-style-type: none
+
+@media only screen and (max-width: 767px)
+	#errorContainer
+		width: 80%
+
+@media only screen and (min-width: 768px)
+	#errorContainer
+		width: 40%
+
+input.error,
+select.error
+	border: 3px solid #A94442 !important

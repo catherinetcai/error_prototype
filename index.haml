@@ -1,0 +1,113 @@
+!!! 5
+%html{:lang => "en"}
+	%head
+		%title= "Error Prototype"
+		%meta{:charset => "utf-8"}
+		%meta{:content => "IE-edge,chrome=1", "http-equiv" => "X-UA-Compatiable"}
+		%meta{:content => "", :name => "description"}
+		%meta{:content => "width=device-width, initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}
+		
+		-# Bootstrap
+		%link{:href => "assets/css/bootstrap.min.css", :rel => "stylesheet"}
+		%link{:href => "assets/css/bootstrap-theme.min.css", :rel => "stylesheet"}
+		%link{:href => "assets/css/application.css", :rel => "stylesheet"}
+
+	%body
+		%nav.navbar.navbar-inverse
+			.col-xs-12.text-center{:id => "logo_container"}
+				%a{:href => "/"}
+					%img{:src => "images/home_logo.png"}
+		.clearfix
+		%container-fluid.main
+			%invitation.text-center
+				.header-text
+					%h4.title.text-center
+						b Spot Error Test
+				%p.text-center
+				#errorContainer
+					%ul
+				%form#test_form
+					.form-group.name
+						-#%label.name{:for => "testname"} Username
+						%input#testname{:type => "text", :class => "form-control", :placeholder => "Username", :name => "testname"}
+							%span.delete-button-container.hidden
+								%img.delete-button{:src => "images/clear.png"}
+					.form-group.password
+						-#%label.password{:for => "test_password"} Password
+						%input{:type => "password", :class => "form-control", :id => "test_password", :name => "test_password", :placeholder => "Password"}
+							%span.delete-button-container.hidden
+								%img.delete-button{:src => "images/clear.png"}
+					.form-group.confirm_password
+						-#%label.confirmpassword{:for => "test_confirm_password"} Confirm Password
+						%input{:type => "password", :class => "form-control", :id => "test_confirm_password", :name => "test_confirm_password", :placeholder => "Confirm password"}
+							%span.delete-button-container.hidden
+								%img.delete-button{:src => "images/clear.png"}
+					.form-group.email
+						-#%label.email{:for => "test_email"} Email
+						%input{:type => "text", :class => "form-control", :name => "test_email", :id => "test_email", :placeholder => "Enter email address" }
+							%span.delete-button-container.hidden
+								%img.delete-button{:src => "images/clear.png"}
+					.form-group.state
+						-#%label.state{:for => "test_state"} State
+						%select.form-control.state-select{:id =>"invitation_state", :name => "test_state"}
+							%option{:value => "", :id => "select_state" } Select state
+							%option{:value => "AL"} AL
+							%option{:value => "AK"} AK
+							%option{:value => "AZ"} AZ
+							%option{:value => "AR"} AR
+							%option{:value => "CA"} CA
+							%option{:value => "CO"} CO
+							%option{:value => "CT"} CT
+							%option{:value => "DE"} DE
+							%option{:value => "DC"} DC
+							%option{:value => "FL"} FL
+							%option{:value => "GA"} GA
+							%option{:value => "HI"} HI
+							%option{:value => "ID"} ID
+							%option{:value => "IL"} IL
+							%option{:value => "IN"} IN
+							%option{:value => "IA"} IA
+							%option{:value => "KS"} KS
+							%option{:value => "KY"} KY
+							%option{:value => "LA"} LA
+							%option{:value => "ME"} ME
+							%option{:value => "MD"} MD
+							%option{:value => "MA"} MA
+							%option{:value => "MI"} MI
+							%option{:value => "MN"} MN
+							%option{:value => "MS"} MS
+							%option{:value => "MO"} MO
+							%option{:value => "MT"} MT
+							%option{:value => "NE"} NE
+							%option{:value => "NV"} NV
+							%option{:value => "NH"} NH
+							%option{:value => "NJ"} NJ
+							%option{:value => "NM"} NM
+							%option{:value => "NY"} NY
+							%option{:value => "NC"} NC
+							%option{:value => "ND"} ND
+							%option{:value => "OH"} OH
+							%option{:value => "OK"} OK
+							%option{:value => "OR"} OR
+							%option{:value => "PA"} PA
+							%option{:value => "RI"} RI
+							%option{:value => "SC"} SC
+							%option{:value => "SD"} SD
+							%option{:value => "TN"} TN
+							%option{:value => "TX"} TX
+							%option{:value => "UT"} UT
+							%option{:value => "VT"} VT
+							%option{:value => "VA"} VA
+							%option{:value => "WA"} WA
+							%option{:value => "WV"} WV
+							%option{:value => "WI"} WI
+							%option{:value => "WY"} WY
+					
+					.button-container.col-xs-12
+						%input.btn.btn-default{:type => "submit", :value => "Submit"}
+		=# jquery & modernizr
+		%script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
+		%script{:type => "text/javascript", :src => "http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"}
+		%script{:type => "text/javascript", :src => "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"}
+		%script{:type => "text/javascript", :src => "assets/js/vendor/bootstrap.min.js"}
+		%script{:type => "text/javascript", :src => "assets/js/main.js"}
